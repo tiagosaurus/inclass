@@ -103,7 +103,7 @@ public class TriangleTest {
     @Test
     public void INVALID() {
         Type actual = Triangle.classify(100, 10, 10);
-        Type expected = ISOSCELES;
+        Type expected = INVALID;
         assertEquals(actual, expected);
     }
 
