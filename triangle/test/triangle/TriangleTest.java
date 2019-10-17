@@ -38,24 +38,62 @@ public class TriangleTest {
         assertEquals(actual, expected);
     }
 
-    // equal input
-    public void test_input_equal1() {
-        Type actual = Triangle.classify(10, 10, -1);
+    // unique length invliad
+    @Test
+    public void test_unique_length_invalid() {
+        Type actual = Triangle.classify(1, 2, 5);
         Type expected = INVALID;
         assertEquals(actual, expected);
     }
 
-    public void test_input_equal2() {
-        Type actual = Triangle.classify(10, 10, -1);
-        Type expected = INVALID;
+    // unique length valid
+    @Test
+    public void test_unique_length_valid() {
+        Type actual = Triangle.classify(6, 7, 8);
+        Type expected = SCALENE;
         assertEquals(actual, expected);
     }
 
-    public void test_input_equal2() {
-        Type actual = Triangle.classify(10, 10, -1);
-        Type expected = INVALID;
+    // tran >  3 part 1
+    @Test
+    public void test_tran3_1() {
+        Type actual = Triangle.classify(10, 10, 10);
+        Type expected = EQUILATERAL;
+        assertEquals(actual, expected);
+    }
+
+    // trian == 1 && a + b > c)
+    @Test
+    public void test_ISO_1() {
+        Type actual = Triangle.classify(10, 10, 1);
+        Type expected = ISOSCELES;
+        assertEquals(actual, expected);
+    }
+
+    // trian == 2 && a + c > b
+    @Test
+    public void test_ISO_2() {
+        Type actual = Triangle.classify(10, 1, 10);
+        Type expected = ISOSCELES;
+        assertEquals(actual, expected);
+    }
+
+    // trian == 3 && b + c > a
+    @Test
+    public void test_ISO_3() {
+        Type actual = Triangle.classify(1, 10, 10);
+        Type expected = ISOSCELES;
+        assertEquals(actual, expected);
+    }
+    
+    @Test
+    public void INVALID() {
+        Type actual = Triangle.classify(100, 10, 10);
+        Type expected = ISOSCELES;
         assertEquals(actual, expected);
     }
 
 
 }
+
+
