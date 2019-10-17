@@ -46,24 +46,24 @@ public class TriangleTest {
         assertEquals(actual, expected);
     }
 
+    @Test
+    public void test_unique_length_invalid1() {
+        Type actual = Triangle.classify(1, 7, 5);
+        Type expected = INVALID;
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void test_unique_length_invalid2() {
+        Type actual = Triangle.classify(9, 2, 5);
+        Type expected = INVALID;
+        assertEquals(actual, expected);
+    }
+
     // unique length valid
     @Test
     public void test_unique_length_valid1() {
-        Type actual = Triangle.classify(6, 7, 8);
-        Type expected = SCALENE;
-        assertEquals(actual, expected);
-    }
-
-    @Test
-    public void test_unique_length_valid2() {
-        Type actual = Triangle.classify(6, 3, 9);
-        Type expected = SCALENE;
-        assertEquals(actual, expected);
-    }
-
-    @Test
-    public void test_unique_length_valid3() {
-        Type actual = Triangle.classify(2, 7, 8);
+        Type actual = Triangle.classify(12, 7, 8);
         Type expected = SCALENE;
         assertEquals(actual, expected);
     }
