@@ -1,0 +1,116 @@
+Adam Tiago
+Geon Yoon
+Jackson Weber
+Yu Fu
+Kevin Tu
+
+Analyses
+1.	Determine the code coverage ratios and mutant detection rates for each of your three developed test suites.
+
+Line Coverage Test Suite: 
+•	Line Coverage: 100% | 26/26
+•	Branch Coverage: 82% | 28/34
+•	Mutations Killed: 71.33% | 107/150
+
+Branch Coverage Test Suite:
+• 	Line Coverage: 100% | 26/26
+•	Branch Coverage: 100% | 34/34
+•	Mutations Killed: 81.33% | 122/150
+
+Mutations Test Suite: 
+•	Line Coverage: 100% | 26/26
+•	Branch Coverage: 100% | 34/34
+•	Mutations Killed: 94.00 % | 141/150
+
+2.	Delete all assertions from your test suites and repeat step 1.
+
+Line Coverage Test Suite: 
+•	Line Coverage: 100% | 4/26
+•	Branch Coverage: 82% | 28/34
+•	Mutations Killed: 0% | 0/150
+
+Branch Coverage Test Suite:
+•	Line Coverage: 100% | 26/26
+•	Branch Coverage: 100% | 34/34
+•	Mutations Killed: 0%| 0/150
+
+Mutations Test Suite: 
+•	Line Coverage: 100% | 26/26
+•	Branch Coverage: 100% | 34/34
+•	Mutations Killed: 0% | 0/150
+
+Questions
+1.	Did your approach to writing unit tests differ between developing a coverage-adequate test 
+suite and developing a mutation-adequate test suite? Briefly explain why or why not.
+
+The methods completely differed. Developing coverage-adequate test suites involved using the original
+code as is – and giving test cases that adequately covered it. Developing a mutation-adequate test suite
+involved looking at individual mutations and providing test cases that would pass the original code but 
+fail the mutated code.
+
+2.	Do your coverage-adequate test suites detect (i.e., kill) all detectable mutants? Do they cover all mutants 
+(i.e., cover the mutated code)? Briefly explain why or why not?
+
+The coverage-adequate test suites do not detect all detectable mutants. They do fairly well, in this case they 
+miss 19 of the detectable mutants – this is because when developing the coverage-adequate test suites, we did 
+not think of many of the possible mutants, and only focused on covering the code “as is”. It’s clear from doing 
+this that thinking of variations on our code is of importance when testing.
+
+3.	For any given program, why are some mutants not detectable?
+
+Not all mutants are detectable in a given program because not all mutants are reachable – some of the cases given 
+in the mutated program are not possible given the design of the original program.
+
+4.	Consider your mutation-adequate test suite and the triangle program. For each undetected mutant, briefly 
+explain why it is not detectable.
+
+Mutant# 11:
+Even if invalid input makes it past the mutated code, it is later caught in the code and correctly identified as INVALID. 
+
+Mutant# 59:
+The variable “trian” will never be less than zero given the code, so these statements are essentially equivalent. 
+
+Mutant# 76:
+To reach this point, all variables need to be distinct from each other and positive. In the original, if any of these 
+equates to true it is identified as INVALID. “b + c <= a” will equate the same no matter which code you use. If 
+“a + b <=c” or “a + c <= b” equate to true, the other cannot also be true. This means that even in the mutated code
+you get the same response as in the original. 
+
+Mutant# 87:
+This is extremely similar to mutant# 76. To reach this point, all variables need to be distinct from each other and positive. 
+In the original, if any of these equates to true it is identified as INVALID. “a + b <= c” will equate the same no matter which
+code you use. If “a + c <= b” or “b + c <= a” equate to true, the other cannot also be true. This means that even in the mutated 
+code, you get the same response as the original.
+
+Mutant# 101:
+The variable “trian” can never be less than 1 at this point in the code – it would be caught by the earlier if statement and would 
+return. Meaning these statements are essentially equivalent. 
+
+Mutant# 111:
+These are essentially equivalent statements given only 2 conditionals.  
+
+Mutant# 128:
+Similar to mutant# 111, these are essentially equivalent statements given only 2 conditionals.  
+
+Mutant# 136:
+If the variable “trian” is greater than 3, it would be caught by the earlier if statement for EQUILATERAL triangles and returned. 
+Therefore, these two statements are essentially equivalent.
+
+Mutant# 145:
+Similar to mutants# 111 and 128, these are essentially equivalent statements given only 2 conditionals.
+
+5.	What changes in the code coverage ratios and mutant detection rates did you observe when deleting all assertions?
+
+The code coverage ratios remained the same, but there were no mutants killed when all assertions were deleted.
+ 
+6.	Create a definition of “test case redundancy” based on code coverage or mutation analysis. Given your definition of test case redundancy, 
+are some of the test cases in your test suites redundant? Given your definition of test case redundancy, would you remove redundant test cases? 
+Briefly explain why or why not.
+
+Test case redundancy would be test cases that if they were to be removed would not have any effect on the code coverage or the mutants killed. 
+I went through each test individually and commented them out, testing if an individual test had any negative effects on the outcome of both code
+coverage and mutant detection, and I did end up removing a few of these tests which had no negative impact. It’s important to remove redundant test 
+cases to help reduce maintenance costs – but it also needs to be done very carefully. The integrity of the test suite could be put into jeopardy if 
+care is not taken. 
+
+
